@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "spring.gateway.token",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.gateway.token'"
+  },
+  {
+    "name": "product.service.base-url",
+    "type": "java.lang.String",
+    "description": "A description for 'product.service.base-url'"
+  },
+  {
+    "name": "internal.service.token",
+    "type": "java.lang.String",
+    "description": "A description for 'internal.service.token'"
+  },
+  {
+    "name": "gateway.token",
+    "type": "java.lang.String",
+    "description": "A description for 'gateway.token'"
+  }
+]}
