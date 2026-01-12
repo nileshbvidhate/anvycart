@@ -1,0 +1,13 @@
+server:
+  port: 8099
+
+spring:
+  application:
+    name: downstream-service
+
+gateway:
+  token: gateway-internal-secret-token
+
+internal:
+  service:
+    token: internal-service-secret-token
