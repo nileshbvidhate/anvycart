@@ -1,0 +1,32 @@
+{"properties": [
+  {
+    "name": "spring.gateway.token",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.gateway.token'"
+  },
+  {
+    "name": "internal.service.token",
+    "type": "java.lang.String",
+    "description": "A description for 'internal.service.token'"
+  },
+  {
+    "name": "inventory.service.base-url",
+    "type": "java.lang.String",
+    "description": "A description for 'inventory.service.base-url'"
+  },
+  {
+    "name": "gateway.token",
+    "type": "java.lang.String",
+    "description": "A description for 'gateway.token'"
+  },
+  {
+    "name": "product.image.upload-dir",
+    "type": "java.lang.String",
+    "description": "A description for 'product.image.upload-dir'"
+  },
+  {
+    "name": "gateway.base-url",
+    "type": "java.lang.String",
+    "description": "A description for 'gateway.base-url'"
+  }
+]}
