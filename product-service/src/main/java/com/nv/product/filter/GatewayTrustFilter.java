@@ -1,10 +1,13 @@
 package com.nv.product.filter;
 
 import java.io.IOException;
-
+import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nv.product.exception.ErrorResponse;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,6 +19,8 @@ public class GatewayTrustFilter extends OncePerRequestFilter {
 	@Value("${gateway.token}")
 	private String gatewayToken;
 
+	private final ObjectMapper objectMapper = new ObjectMapper();
+
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
@@ -23,9 +28,18 @@ public class GatewayTrustFilter extends OncePerRequestFilter {
 		String token = request.getHeader("X-Gateway-Token");
 
 		if (token == null || !token.equals(gatewayToken)) {
-			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 
-			return;
+			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+			response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+			response.setCharacterEncoding("UTF-8");
+
+			ErrorResponse error = new ErrorResponse(LocalDateTime.now(), HttpServletResponse.SC_FORBIDDEN,
+					"Forbidden", "Gateway call required only", request.getRequestURI());
+
+			response.getWriter().write(objectMapper.writeValueAsString(error));
+			response.getWriter().flush();
+
+			return; 
 		}
 
 		filterChain.doFilter(request, response);
