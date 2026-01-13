@@ -12,14 +12,16 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 
 @Component
+@RequiredArgsConstructor
 public class GatewayTrustFilter extends OncePerRequestFilter {
 
 	@Value("${gateway.token}")
 	private String gatewayToken;
 
-	private final ObjectMapper objectMapper = new ObjectMapper();
+	private final ObjectMapper objectMapper;
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -33,13 +35,12 @@ public class GatewayTrustFilter extends OncePerRequestFilter {
 			response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 			response.setCharacterEncoding("UTF-8");
 
-			ErrorResponse error = new ErrorResponse(LocalDateTime.now(), HttpServletResponse.SC_FORBIDDEN,
-					"Forbidden", "Gateway call required only", request.getRequestURI());
+			ErrorResponse error = new ErrorResponse(LocalDateTime.now(), HttpServletResponse.SC_FORBIDDEN, "Forbidden",
+					"Gateway call required only", request.getRequestURI());
 
 			response.getWriter().write(objectMapper.writeValueAsString(error));
 			response.getWriter().flush();
-
-			return; 
+			return;
 		}
 
 		filterChain.doFilter(request, response);
