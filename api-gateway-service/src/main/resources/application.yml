@@ -50,6 +50,11 @@ spring:
           predicates:
             - Path=/inventories/**,/internal/inventories/**
 
+        - id: cart-service
+          uri: http://localhost:8085
+          predicates:
+            - Path=/cart/**,/internal/cart/**
+
 jwt:
   secret: my-super-secret-key-my-super-secret-key
 
