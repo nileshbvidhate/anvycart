@@ -124,6 +124,21 @@ public class AdminImageServiceImpl implements AdminImageService {
 
 		// Update file if provided
 		if (file != null && !file.isEmpty()) {
+			
+			// DELETE OLD FILE FIRST
+	        String oldImagePath = image.getImageUrl();
+	        if (oldImagePath != null) {
+	            try {
+	                Path oldFile = Paths.get(
+	                        IMAGE_DIR,
+	                        oldImagePath.replace("/images/", "")
+	                );
+	                Files.deleteIfExists(oldFile);
+	            } catch (IOException e) {
+	                throw new RuntimeException("Failed to delete old image file",e);
+	            }
+	        }
+			
 			String filename = System.currentTimeMillis() + "_" + file.getOriginalFilename();
 			Path path = Paths.get(IMAGE_DIR, filename);
 
