@@ -281,6 +281,15 @@ public class GlobalExceptionHandler {
 	////////////////////////////////////// Exceptions
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	@ExceptionHandler(RuntimeException.class)
+	public ResponseEntity<ErrorResponse> handleRuntime(RuntimeException ex, HttpServletRequest request) {
+	    return buildErrorResponse(
+	        HttpStatus.INTERNAL_SERVER_ERROR,
+	        ex.getMessage(),
+	        request.getRequestURI()
+	    );
+	}
+	
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorResponse> handleGenericException(Exception ex, HttpServletRequest request) {
 
