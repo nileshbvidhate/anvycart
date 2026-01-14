@@ -59,24 +59,19 @@ public class ProductMapper {
 		return response;
 	}
 
-	public static InternalProductResponse toProductInternalResponse(Product product, Integer availableQuantity,
-			String imageUrl) {
+	public static InternalProductResponse toProductInternalResponse(Product product) {
 
-		BigDecimal finalPrice = calculateFinalPrice(product.getBasePrice(), product.getDiscountPercentage());
 
 		InternalProductResponse response = new InternalProductResponse();
 
 		response.setProductId(product.getId());
-		response.setTitle(product.getTitle());
+		
 		response.setName(product.getName());
-		response.setBrand(product.getBrand());
+		
 		response.setBasePrice(product.getBasePrice());
 		response.setDiscountPercentage(product.getDiscountPercentage());
-		response.setFinalPrice(finalPrice);
-		response.setActive(true); 
-		response.setCategoryName(product.getCategory().getName());
-		response.setPrimaryImageUrl(baseUrl+imageUrl);
-		response.setAvailableQuantity(availableQuantity);
+		
+		response.setStatus(product.getStatus().name());
 
 		return response;
 	}
