@@ -62,7 +62,6 @@ public class GlobalExceptionHandler {
 		return buildErrorResponse(HttpStatus.UNAUTHORIZED, ex.getMessage(), request.getRequestURI());
 	}
 
-	
 	// Thrown by Spring Security when authenticated user does not have required role
 	// or permission
 	// Occurs with @PreAuthorize, @Secured, or URL based authorization
@@ -264,13 +263,12 @@ public class GlobalExceptionHandler {
 
 		return buildErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), request.getRequestURI());
 	}
-	
+
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////// WebClient
 	////////////////////////////////////// Exceptions
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	
 //	@ExceptionHandler(WebClientResponseException.class)
 //	public ResponseEntity<ErrorResponse> handleWebClientResponseException(WebClientResponseException ex,
 //			HttpServletRequest request) {
@@ -285,6 +283,61 @@ public class GlobalExceptionHandler {
 //
 //		return buildErrorResponse(HttpStatus.SERVICE_UNAVAILABLE, "Product service is unavailable",
 //				request.getRequestURI());
+//	}
+
+//	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	////////////////////////////////////// Feign CLient
+//	////////////////////////////////////// Exceptions
+//	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	
+//	@ExceptionHandler(FeignException.BadRequest.class)
+//	public ResponseEntity<ErrorResponse> handleBadRequest(FeignException.BadRequest ex, HttpServletRequest request) {
+//	
+//	return buildErrorResponse(HttpStatus.BAD_REQUEST, "Bad request to downstream service", request.getRequestURI());
+//	}
+//	
+//	@ExceptionHandler(FeignException.NotFound.class)
+//	public ResponseEntity<ErrorResponse> handleNotFound(FeignException.NotFound ex, HttpServletRequest request) {
+//	
+//	return buildErrorResponse(HttpStatus.NOT_FOUND, "Resource not found in downstream service",
+//	request.getRequestURI());
+//	}
+//	
+//	@ExceptionHandler(FeignException.Conflict.class)
+//	public ResponseEntity<ErrorResponse> handleConflict(FeignException.Conflict ex, HttpServletRequest request) {
+//	
+//	return buildErrorResponse(HttpStatus.CONFLICT, "Conflict in downstream service", request.getRequestURI());
+//	}
+//	
+//	@ExceptionHandler(FeignException.Unauthorized.class)
+//	public ResponseEntity<ErrorResponse> handleUnauthorized(FeignException.Unauthorized ex, HttpServletRequest request) {
+//	
+//	return buildErrorResponse(HttpStatus.UNAUTHORIZED, "Unauthorized in downstream service", request.getRequestURI());
+//	}
+//	
+//	@ExceptionHandler(FeignException.Forbidden.class)
+//	public ResponseEntity<ErrorResponse> handleForbidden(FeignException.Forbidden ex, HttpServletRequest request) {
+//	
+//	return buildErrorResponse(HttpStatus.FORBIDDEN, "Access denied(role base restriction) in downstream service", request.getRequestURI());
+//	}
+//	
+//	@ExceptionHandler(FeignException.ServiceUnavailable.class)
+//	public ResponseEntity<ErrorResponse> handleServiceUnavailable(FeignException.ServiceUnavailable ex,
+//	HttpServletRequest request) {
+//	
+//	return buildErrorResponse(HttpStatus.SERVICE_UNAVAILABLE, "Downstream service unavailable",
+//	request.getRequestURI());
+//	}
+//	
+//	@ExceptionHandler(FeignException.class)
+//	public ResponseEntity<ErrorResponse> handleFeignException(FeignException ex, HttpServletRequest request) {
+//	
+//	HttpStatus status = HttpStatus.resolve(ex.status());
+//	if (status == null) {
+//	status = HttpStatus.INTERNAL_SERVER_ERROR;
+//	}
+//	
+//	return buildErrorResponse(status, "Downstream service error :" + ex.getMessage(), request.getRequestURI());
 //	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -311,6 +364,12 @@ public class GlobalExceptionHandler {
 			HttpServletRequest request) {
 
 		return buildErrorResponse(HttpStatus.CONFLICT, ex.getMessage(), request.getRequestURI());
+	}
+
+	@ExceptionHandler(BadRequestException.class)
+	public ResponseEntity<ErrorResponse> handleBadRequest(BadRequestException ex, HttpServletRequest request) {
+
+		return buildErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), request.getRequestURI());
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
