@@ -33,8 +33,8 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
             return chain.filter(exchange);
         }
         
-        // Product Service Public endpoints
-        if(path.startsWith("/images") || path.startsWith("/public/products"))
+        // Product Service Public endpoints + webhooks razorpay
+        if(path.startsWith("/images") || path.startsWith("/public/products") || path.startsWith("/webhooks/razorpay") )
         {
         	ServerWebExchange mutatedExchange = exchange.mutate()
                     .request(request -> request.headers(headers -> {
