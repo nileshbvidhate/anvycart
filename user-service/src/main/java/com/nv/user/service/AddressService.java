@@ -22,5 +22,9 @@ public interface AddressService {
 	
 	// for internal service only
 	List<InternalAddressResponse> getInternalUserAddresses(Long userId);
+	
+	InternalAddressResponse getAddressById(Long addressId);
+	
+	void validateAddress(Long addressId, Long userId);
 
 }

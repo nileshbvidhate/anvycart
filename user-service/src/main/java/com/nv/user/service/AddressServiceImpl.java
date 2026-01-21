@@ -1,15 +1,14 @@
 package com.nv.user.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.nv.user.dto.AddressResponse;
 import com.nv.user.dto.InternalAddressResponse;
 import com.nv.user.dto.PatchAddressRequest;
 import com.nv.user.dto.AddressRequest;
 import com.nv.user.entity.Address;
+import com.nv.user.exception.BadRequestException;
 import com.nv.user.exception.ResourceNotFoundException;
 import com.nv.user.mapper.AddressMapper;
 import com.nv.user.repository.AddressRepository;
@@ -162,5 +161,28 @@ public class AddressServiceImpl implements AddressService {
 						addr.getCountry(), addr.getIsDefault()))
 				.toList();
 	}
+
+	@Override
+	public InternalAddressResponse getAddressById(Long addressId) {
+
+		Address addr = addressRepo.findById(addressId)
+				.orElseThrow(() -> new ResourceNotFoundException("Address not found"));
+
+		return new InternalAddressResponse(addr.getId(), addr.getUserId(), addr.getAddressLine1(),
+				addr.getAddressLine2(), addr.getCity(), addr.getState(), addr.getPostalCode(), addr.getCountry(),
+				addr.getIsDefault());
+	}
+
+	@Override
+	public void validateAddress(Long addressId, Long userId) {
+
+	    Address addr = addressRepo.findById(addressId)
+	            .orElseThrow(() -> new ResourceNotFoundException("Address not found"));
+
+	    if (!addr.getUserId().equals(userId)) {
+	        throw new BadRequestException("Address does not belong to user");
+	    }
+	}
+
 
 }
