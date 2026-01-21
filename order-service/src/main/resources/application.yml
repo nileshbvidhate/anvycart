@@ -23,4 +23,24 @@ internal:
   service:
     token: internal-service-secret-token
 
+services:
+  user-service:
+    url: http://localhost:8082/internal/users
 
+  product-service:
+    url: http://localhost:8083/internal/products
+
+  inventory-service:
+    url: http://localhost:8084/internal/inventories
+
+  cart-service:
+    url: http://localhost:8085/internal/cart
+
+  payment-service:
+    url: http://localhost:8087/internal/payments
+  
+  delivery-service:
+    url: http://localhost:8088/internal/deliveries
+
+payment:
+  currency-type: INR

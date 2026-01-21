@@ -8,5 +8,40 @@
     "name": "internal.service.token",
     "type": "java.lang.String",
     "description": "A description for 'internal.service.token'"
+  },
+  {
+    "name": "services.cart-service.url",
+    "type": "java.lang.String",
+    "description": "A description for 'services.cart-service.url'"
+  },
+  {
+    "name": "services.product-service.url",
+    "type": "java.lang.String",
+    "description": "A description for 'services.product-service.url'"
+  },
+  {
+    "name": "services.inventory-service.url",
+    "type": "java.lang.String",
+    "description": "A description for 'services.inventory-service.url'"
+  },
+  {
+    "name": "services.payment-service.url",
+    "type": "java.lang.String",
+    "description": "A description for 'services.payment-service.url'"
+  },
+  {
+    "name": "services.user-service.url",
+    "type": "java.lang.String",
+    "description": "A description for 'services.user-service.url'"
+  },
+  {
+    "name": "payment.currency-type",
+    "type": "java.lang.String",
+    "description": "A description for 'payment.currency-type'"
+  },
+  {
+    "name": "services.delivery-service.url",
+    "type": "java.lang.String",
+    "description": "A description for 'services.delivery-service.url'"
   }
 ]}

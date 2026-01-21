@@ -47,6 +47,10 @@ public class Order {
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 30)
 	private OrderStatus status;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="order_source",nullable = false, length = 10)
+	private OrderSource orderSource;
 
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<OrderItem> orderItems;

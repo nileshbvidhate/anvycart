@@ -2,9 +2,12 @@ package com.nv.order.entity;
 
 public enum OrderStatus {
     PAYMENT_PENDING,
-    PLACED,
+    PAYMENT_PROCESSING,
     PAYMENT_FAILED,
-    CANCELLED,
+    PLACED,
+    CONFIRMED,
+    CANCELLED,	
     SHIPPED,
+    OUT_FOR_DELIVERY,
     DELIVERED
 }
