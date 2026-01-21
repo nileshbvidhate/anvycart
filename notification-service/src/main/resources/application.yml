@@ -35,3 +35,8 @@ spring:
       properties:
         spring.json.trusted.packages: "*"
         spring.json.value.default.type: com.nv.notification.dto.NotificationEvent
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1c10d44 (Add notification service config using environment variables)
