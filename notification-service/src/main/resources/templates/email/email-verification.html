@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Verification</title>
+</head>
+<body style="font-family: Arial, sans-serif; color:#333;">
+
+<p>Welcome to <strong>AnvyCart</strong> 🎉</p>
+
+<p>
+    Thank you for registering with us.  
+    Please verify your email address to activate your account.
+</p>
+
+<p style="font-size:16px;">
+    <strong>Verification OTP:</strong><br/>
+    <span style="font-size:20px; letter-spacing:2px;"
+          th:text="${otp}">654321</span>
+</p>
+
+<p>
+    If you did not create this account, you can safely ignore this email.
+</p>
+
+<p>
+    Regards,<br/>
+    <strong>AnvyCart Team</strong>
+</p>
+
+</body>
+</html>

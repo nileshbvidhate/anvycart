@@ -1,0 +1,35 @@
+<div xmlns:th="http://www.thymeleaf.org">
+
+  <h2 style="margin-top:0;">
+    Payment Failed
+  </h2>
+
+  <p>
+    Unfortunately, we were unable to process the payment for your order.
+  </p>
+
+  <p>
+    <b>Order ID:</b>
+    <span th:text="${orderId}"></span>
+  </p>
+
+  <p>
+    <b>Product:</b>
+    <span th:text="${productTitle}"></span>
+  </p>
+
+  <p>
+    Please retry the payment from your AnvyCart account
+    or choose a different payment method.
+  </p>
+
+  <p>
+    If the issue persists, please contact our support team.
+  </p>
+
+  <p>
+    Regards,<br/>
+    <b>AnvyCart Support Team</b>
+  </p>
+
+</div>

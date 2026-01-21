@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Shipped</title>
+</head>
+<body style="font-family: Arial, sans-serif; color:#333;">
+
+<p>Your order is on the way 🚚</p>
+
+<p>
+    <strong>Order ID:</strong> <span th:text="${orderId}"></span><br/>
+    <strong>Tracking ID:</strong> <span th:text="${trackingId}"></span>
+</p>
+
+<p>
+    Expected delivery: <strong th:text="${expectedDelivery}"></strong>
+</p>
+
+<p>
+    Regards,<br/>
+    <strong>AnvyCart Logistics Team</strong>
+</p>
+
+</body>
+</html>

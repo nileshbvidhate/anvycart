@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Placed</title>
+</head>
+<body style="font-family: Arial, sans-serif; color:#333;">
+
+<p>Dear <strong th:text="${customerName}">Customer</strong>,</p>
+
+<p>
+    Your order has been placed successfully on <strong>AnvyCart</strong>.
+</p>
+
+<p>
+    <strong>Order ID:</strong> <span th:text="${orderId}"></span><br/>
+    <strong>Product:</strong> <span th:text="${productName}"></span><br/>
+    <strong>Total Amount:</strong> ₹<span th:text="${amount}"></span>
+</p>
+
+<p>
+    We will notify you once your order is confirmed.
+</p>
+
+<p>
+    Regards,<br/>
+    <strong>AnvyCart Team</strong>
+</p>
+
+</body>
+</html>

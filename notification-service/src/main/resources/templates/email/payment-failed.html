@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Failed</title>
+</head>
+<body style="font-family: Arial, sans-serif; color:#333;">
+
+<p>
+    Unfortunately, your payment could not be processed.
+</p>
+
+<p>
+    <strong>Order ID:</strong> <span th:text="${orderId}"></span><br/>
+    <strong>Reason:</strong> <span th:text="${failureReason}"></span>
+</p>
+
+<p>
+    Please retry the payment or contact support.
+</p>
+
+</body>
+</html>
